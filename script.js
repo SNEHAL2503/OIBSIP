@@ -1,60 +1,35 @@
-function addTask() {
+function register() {
+    let username = document.getElementById("regUser").value;
+    let password = document.getElementById("regPass").value;
 
-    let input = document.getElementById("taskInput");
-    let task = input.value.trim();
-
-    if(task === ""){
-        alert("Please enter a task!");
+    if(username === "" || password === ""){
+        alert("Please fill all fields!");
         return;
     }
 
-    let li = document.createElement("li");
+    localStorage.setItem("username", username);
+    localStorage.setItem("password", password);
 
-    li.innerHTML = `
-        <strong>${task}</strong>
-        <div class="time">
-            Added: ${new Date().toLocaleString()}
-        </div>
-
-        <button class="complete" onclick="completeTask(this)">Complete</button>
-        <button class="edit" onclick="editTask(this)">Edit</button>
-        <button class="delete" onclick="deleteTask(this)">Delete</button>
-    `;
-
-    document.getElementById("pendingList").appendChild(li);
-
-    input.value = "";
+    alert("Registration Successful!");
 }
 
-function completeTask(btn){
+function login() {
+    let username = document.getElementById("loginUser").value;
+    let password = document.getElementById("loginPass").value;
 
-    let li = btn.parentElement;
+    let storedUser = localStorage.getItem("username");
+    let storedPass = localStorage.getItem("password");
 
-    btn.remove();
-
-    let completedTime = document.createElement("div");
-    completedTime.className = "time";
-    completedTime.innerHTML =
-        "Completed: " + new Date().toLocaleString();
-
-    li.appendChild(completedTime);
-
-    document.getElementById("completedList").appendChild(li);
-}
-
-function editTask(btn){
-
-    let li = btn.parentElement;
-
-    let task = li.querySelector("strong");
-
-    let newTask = prompt("Edit task:", task.innerText);
-
-    if(newTask){
-        task.innerText = newTask;
+    if(username === storedUser && password === storedPass){
+        document.getElementById("securePage").style.display = "block";
+        alert("Login Successful!");
+    }
+    else{
+        alert("Invalid Username or Password!");
     }
 }
 
-function deleteTask(btn){
-    btn.parentElement.remove();
+function logout() {
+    document.getElementById("securePage").style.display = "none";
+    alert("Logged Out Successfully!");
 }
