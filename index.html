@@ -1,29 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temperature Converter</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+    <style>
+        body{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            background:#1e1e2f;
+            font-family:Arial, sans-serif;
+        }
+
+        .calculator{
+            background:#2c2c3e;
+            padding:20px;
+            border-radius:15px;
+            box-shadow:0 0 15px rgba(0,0,0,0.5);
+        }
+
+        #display{
+            width:100%;
+            height:60px;
+            font-size:24px;
+            text-align:right;
+            margin-bottom:15px;
+            padding-right:10px;
+            border:none;
+            border-radius:10px;
+            background:#fff;
+        }
+
+        .buttons{
+            display:grid;
+            grid-template-columns:repeat(4,70px);
+            gap:10px;
+        }
+
+        button{
+            height:60px;
+            font-size:22px;
+            border:none;
+            border-radius:10px;
+            cursor:pointer;
+            background:#4b4b6b;
+            color:white;
+            transition:0.2s;
+        }
+
+        button:hover{
+            background:#6a6a9a;
+        }
+
+        .operator{
+            background:#ff9500;
+        }
+
+        .equal{
+            background:#28a745;
+        }
+
+        .clear{
+            background:#dc3545;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Temperature Converter</h1>
+<div class="calculator">
+    <input type="text" id="display" readonly>
 
-        <input type="number" id="tempInput" placeholder="Enter temperature">
+    <div class="buttons">
+        <button class="clear" onclick="clearDisplay()">C</button>
+        <button onclick="append('%')">%</button>
+        <button onclick="append('/')">÷</button>
+        <button class="operator" onclick="append('*')">×</button>
 
-        <select id="unit">
-            <option value="celsius">Celsius</option>
-            <option value="fahrenheit">Fahrenheit</option>
-            <option value="kelvin">Kelvin</option>
-        </select>
+        <button onclick="append('7')">7</button>
+        <button onclick="append('8')">8</button>
+        <button onclick="append('9')">9</button>
+        <button class="operator" onclick="append('-')">-</button>
 
-        <button onclick="convertTemp()">Convert</button>
+        <button onclick="append('4')">4</button>
+        <button onclick="append('5')">5</button>
+        <button onclick="append('6')">6</button>
+        <button class="operator" onclick="append('+')">+</button>
 
-        <div id="result"></div>
+        <button onclick="append('1')">1</button>
+        <button onclick="append('2')">2</button>
+        <button onclick="append('3')">3</button>
+        <button class="equal" onclick="calculate()">=</button>
+
+        <button onclick="append('0')">0</button>
+        <button onclick="append('.')">.</button>
     </div>
+</div>
 
-    <script src="script.js"></script>
+<script>
+    let display = document.getElementById("display");
+
+    function append(value){
+        display.value += value;
+    }
+
+    function clearDisplay(){
+        display.value = "";
+    }
+
+    function calculate(){
+        try{
+            display.value = eval(display.value);
+        }
+        catch{
+            display.value = "Error";
+        }
+    }
+</script>
+
 </body>
 </html>
