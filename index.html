@@ -3,76 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Temperature Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <nav>
-            <h2 class="logo">Portfolio</h2>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <h1>Temperature Converter</h1>
 
-    <!-- Home Section -->
-    <section id="home" class="home">
-        <img src="profile.jpg" alt="Profile Picture">
-        <h1>Hi, I'm Snehal Dethe</h1>
-        <p>Web Developer | AI Enthusiast | Student</p>
-        <button>Download Resume</button>
-    </section>
+        <input type="number" id="tempInput" placeholder="Enter temperature">
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>
-            I am passionate about Web Development, AI, and Data Science.
-            I enjoy creating websites and learning new technologies.
-        </p>
-    </section>
+        <select id="unit">
+            <option value="celsius">Celsius</option>
+            <option value="fahrenheit">Fahrenheit</option>
+            <option value="kelvin">Kelvin</option>
+        </select>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="cards">
-            <div class="card">HTML</div>
-            <div class="card">CSS</div>
-            <div class="card">JavaScript</div>
-            <div class="card">Python</div>
-            <div class="card">SQL</div>
-        </div>
-    </section>
+        <button onclick="convertTemp()">Convert</button>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2>Projects</h2>
-        <div class="cards">
-            <div class="card">Landing Page</div>
-            <div class="card">Temperature Converter</div>
-            <div class="card">Portfolio Website</div>
-        </div>
-    </section>
+        <div id="result"></div>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Email: yourmail@gmail.com</p>
-        <p>Phone: +91 XXXXXXXXXX</p>
-        <p>LinkedIn: linkedin.com/in/yourprofile</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 Snehal Dethe | All Rights Reserved</p>
-    </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
