@@ -1,121 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Calculator</title>
-    <style>
-        body{
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            height:100vh;
-            background:#1e1e2f;
-            font-family:Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tribute Page - Dr. A.P.J. Abdul Kalam</title>
 
-        .calculator{
-            background:#2c2c3e;
-            padding:20px;
-            border-radius:15px;
-            box-shadow:0 0 15px rgba(0,0,0,0.5);
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(to right,#e3f2fd,#bbdefb);
+    color:#333;
+}
 
-        #display{
-            width:100%;
-            height:60px;
-            font-size:24px;
-            text-align:right;
-            margin-bottom:15px;
-            padding-right:10px;
-            border:none;
-            border-radius:10px;
-            background:#fff;
-        }
+.container{
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
 
-        .buttons{
-            display:grid;
-            grid-template-columns:repeat(4,70px);
-            gap:10px;
-        }
+h1{
+    text-align:center;
+    color:#0d47a1;
+}
 
-        button{
-            height:60px;
-            font-size:22px;
-            border:none;
-            border-radius:10px;
-            cursor:pointer;
-            background:#4b4b6b;
-            color:white;
-            transition:0.2s;
-        }
+h3{
+    text-align:center;
+    color:#555;
+}
 
-        button:hover{
-            background:#6a6a9a;
-        }
+img{
+    display:block;
+    width:250px;
+    margin:20px auto;
+    border-radius:50%;
+    border:5px solid #1976d2;
+}
 
-        .operator{
-            background:#ff9500;
-        }
+p{
+    line-height:1.8;
+    text-align:justify;
+    font-size:18px;
+}
 
-        .equal{
-            background:#28a745;
-        }
+.quote{
+    background:#e3f2fd;
+    padding:15px;
+    border-left:5px solid #1976d2;
+    font-style:italic;
+    margin-top:20px;
+}
 
-        .clear{
-            background:#dc3545;
-        }
-    </style>
+footer{
+    text-align:center;
+    margin-top:25px;
+    color:#666;
+}
+</style>
 </head>
 <body>
 
-<div class="calculator">
-    <input type="text" id="display" readonly>
+<div class="container">
+    <h1>Dr. A. P. J. Abdul Kalam</h1>
+    <h3>1931 - 2015</h3>
 
-    <div class="buttons">
-        <button class="clear" onclick="clearDisplay()">C</button>
-        <button onclick="append('%')">%</button>
-        <button onclick="append('/')">÷</button>
-        <button class="operator" onclick="append('*')">×</button>
 
-        <button onclick="append('7')">7</button>
-        <button onclick="append('8')">8</button>
-        <button onclick="append('9')">9</button>
-        <button class="operator" onclick="append('-')">-</button>
 
-        <button onclick="append('4')">4</button>
-        <button onclick="append('5')">5</button>
-        <button onclick="append('6')">6</button>
-        <button class="operator" onclick="append('+')">+</button>
+    <p>
+        Dr. A. P. J. Abdul Kalam was one of India's most respected scientists
+        and the 11th President of India. Known as the "Missile Man of India",
+        he played a major role in India's space and defense programs.
+    </p>
 
-        <button onclick="append('1')">1</button>
-        <button onclick="append('2')">2</button>
-        <button onclick="append('3')">3</button>
-        <button class="equal" onclick="calculate()">=</button>
+    <p>
+        I admire Dr. Kalam for his simplicity, dedication, and inspirational
+        thoughts. He motivated millions of students to dream big and work hard
+        to achieve success. His life teaches us that knowledge, discipline,
+        and perseverance are the keys to greatness.
+    </p>
 
-        <button onclick="append('0')">0</button>
-        <button onclick="append('.')">.</button>
+    <div class="quote">
+        "Dream, Dream, Dream. Dreams transform into thoughts and thoughts result in action."
+        – Dr. A. P. J. Abdul Kalam
     </div>
+
+    <footer>
+        Created with ❤️ as a Tribute Page
+    </footer>
 </div>
-
-<script>
-    let display = document.getElementById("display");
-
-    function append(value){
-        display.value += value;
-    }
-
-    function clearDisplay(){
-        display.value = "";
-    }
-
-    function calculate(){
-        try{
-            display.value = eval(display.value);
-        }
-        catch{
-            display.value = "Error";
-        }
-    }
-</script>
 
 </body>
 </html>
