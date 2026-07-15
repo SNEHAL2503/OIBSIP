@@ -1,36 +1,60 @@
-function convertTemp() {
-    let temp = document.getElementById("tempInput").value;
-    let unit = document.getElementById("unit").value;
-    let result = document.getElementById("result");
+function addTask() {
 
-    if (temp === "" || isNaN(temp)) {
-        result.innerHTML = "Please enter a valid number!";
+    let input = document.getElementById("taskInput");
+    let task = input.value.trim();
+
+    if(task === ""){
+        alert("Please enter a task!");
         return;
     }
 
-    temp = parseFloat(temp);
+    let li = document.createElement("li");
 
-    if (unit === "celsius") {
-        let f = (temp * 9/5) + 32;
-        let k = temp + 273.15;
-        result.innerHTML =
-            `${temp} °C = ${f.toFixed(2)} °F <br>
-             ${temp} °C = ${k.toFixed(2)} K`;
-    }
+    li.innerHTML = `
+        <strong>${task}</strong>
+        <div class="time">
+            Added: ${new Date().toLocaleString()}
+        </div>
 
-    else if (unit === "fahrenheit") {
-        let c = (temp - 32) * 5/9;
-        let k = c + 273.15;
-        result.innerHTML =
-            `${temp} °F = ${c.toFixed(2)} °C <br>
-             ${temp} °F = ${k.toFixed(2)} K`;
-    }
+        <button class="complete" onclick="completeTask(this)">Complete</button>
+        <button class="edit" onclick="editTask(this)">Edit</button>
+        <button class="delete" onclick="deleteTask(this)">Delete</button>
+    `;
 
-    else if (unit === "kelvin") {
-        let c = temp - 273.15;
-        let f = (c * 9/5) + 32;
-        result.innerHTML =
-            `${temp} K = ${c.toFixed(2)} °C <br>
-             ${temp} K = ${f.toFixed(2)} °F`;
+    document.getElementById("pendingList").appendChild(li);
+
+    input.value = "";
+}
+
+function completeTask(btn){
+
+    let li = btn.parentElement;
+
+    btn.remove();
+
+    let completedTime = document.createElement("div");
+    completedTime.className = "time";
+    completedTime.innerHTML =
+        "Completed: " + new Date().toLocaleString();
+
+    li.appendChild(completedTime);
+
+    document.getElementById("completedList").appendChild(li);
+}
+
+function editTask(btn){
+
+    let li = btn.parentElement;
+
+    let task = li.querySelector("strong");
+
+    let newTask = prompt("Edit task:", task.innerText);
+
+    if(newTask){
+        task.innerText = newTask;
     }
+}
+
+function deleteTask(btn){
+    btn.parentElement.remove();
 }
